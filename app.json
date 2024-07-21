@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "pintu-app",
-    "slug": "pintu-app",
+    "name": "crypto-exchange-app",
+    "slug": "crypto-exchange-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
