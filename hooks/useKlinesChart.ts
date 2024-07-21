@@ -14,7 +14,7 @@ const useKlinesChart = (symbol: string) => {
     const abortController = new AbortController();
 
     const fetchData = () => {
-      fetch(`${BINANCE_API_BASE_URL}/uiKlines?symbol=${symbol}&interval=1d&limit=60`, { signal: abortController.signal })
+      fetch(`${BINANCE_API_BASE_URL}/uiKlines?symbol=${symbol}&interval=4h&limit=60`, { signal: abortController.signal })
         .then((res) => res.json())
         .then((data) => {
           if (!abortController.signal.aborted) {

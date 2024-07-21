@@ -1,4 +1,4 @@
-import { BINANCE_API_BASE_URL } from '@/constants/environments';
+import { BINANCE_API_BASE_URL, BINANCE_WEBSOCKET_BASE_URL } from '@/constants/environments';
 import { getSortedUniqueOrderBookList } from '@/helpers';
 import { Order } from '@/types';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -24,7 +24,7 @@ export const useOrderBook = (symbol: string) => {
         if (!abortController.signal.aborted) {
           snapShot.current = data;
   
-          wsRef.current = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@depth`);
+          wsRef.current = new WebSocket(`${BINANCE_WEBSOCKET_BASE_URL}/${symbol.toLowerCase()}@depth`);
   
           wsRef.current.onmessage = (event) => {
             const msgData = JSON.parse(event.data);

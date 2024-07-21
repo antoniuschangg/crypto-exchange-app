@@ -1,3 +1,4 @@
+import { BINANCE_WEBSOCKET_BASE_URL } from '@/constants/environments';
 import { useEffect, useRef, useState } from 'react';
 
 const useAveragePrice = (symbol: string) => {
@@ -6,7 +7,7 @@ const useAveragePrice = (symbol: string) => {
   const [currentAveragePrice, setCurrentAveragePrice] = useState<string>();
 
   useEffect(() => {
-    wsRef.current = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@avgPrice`);
+    wsRef.current = new WebSocket(`${BINANCE_WEBSOCKET_BASE_URL}/${symbol.toLowerCase()}@avgPrice`);
 
     wsRef.current.onmessage = (event) => {
       const msgData = JSON.parse(event.data);
